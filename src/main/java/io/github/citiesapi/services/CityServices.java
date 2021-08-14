@@ -29,4 +29,11 @@ public class CityServices {
 
     }
 
+    public void verifyIfCityExist(Long id) throws CityNotFoundException {
+
+        cityRepository.findById(id)
+                .orElseThrow(() -> new CityNotFoundException(id));
+
+    }
+
 }
