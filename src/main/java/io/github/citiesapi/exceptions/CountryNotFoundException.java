@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class CountryNotFoundException extends Exception {
 
     public CountryNotFoundException(Long id) {
-        super(String.format("City with ID %s not found in the system ",id));
+        super(String.format("Country with ID %s not found in the system ",id));
     }
 }
