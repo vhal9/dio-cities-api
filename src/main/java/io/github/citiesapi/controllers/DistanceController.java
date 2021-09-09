@@ -4,7 +4,10 @@ import io.github.citiesapi.exceptions.CityNotFoundException;
 import io.github.citiesapi.models.DTO.DistanceRequestDTO;
 import io.github.citiesapi.services.DistanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/ditances")
@@ -14,14 +17,14 @@ public class DistanceController {
     private DistanceService distanceService;
 
     @GetMapping("/by-points")
-    public Double byPoint(@RequestBody final DistanceRequestDTO distanceRequestDTO) throws CityNotFoundException {
+    public Double byPoint(@Valid @RequestBody final DistanceRequestDTO distanceRequestDTO) throws CityNotFoundException {
 
         return distanceService.distanceByPointInMillis(distanceRequestDTO);
 
     }
 
     @GetMapping("/by-cube")
-    public Double byCube(@RequestBody final DistanceRequestDTO distanceRequestDTO) throws CityNotFoundException {
+    public Double byCube(@Valid @RequestBody final DistanceRequestDTO distanceRequestDTO) throws CityNotFoundException {
 
         return distanceService.distanceByCube(distanceRequestDTO);
 
